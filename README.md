@@ -1,79 +1,61 @@
-# Demo
+# Pokémemory V2
 
-https://zoilum.github.io/
+Welcome to Pokémemory V2, an enhanced version of [my first Pokémon Memory game](https://github.com/Zoilum/pokememory), this time with Vue + Nuxt!
 
-## Nuxt 3 Minimal Starter
+## Table of Contents
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+- [Introduction](#introduction)
+- [Technologies Used](#technologies-used)
+- [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+- [Usage](#usage)
 
-## Setup
+## Introduction
 
-Make sure to install the dependencies:
+Building upon the success of [my first Pokémon Memory game](https://github.com/Zoilum/pokememory) developed in React, Pokémemory V2 is a completely unnecessary, overkilling Vue/Nuxt SSG app, that was used as a coding exercise to teach myself Nuxt, and refresh my Vue knowledge.
 
-```bash
-# npm
-npm install
+## Technologies Used
 
-# pnpm
-pnpm install
+- **HTML5:** Provides the structure and semantics for the game's user interface.
+- **CSS3:** Styles the game elements, ensuring an attractive and visually appealing experience.
+- **Vue:** Powers the interactive gameplay and logic behind Pokémemory V2.
+- **Nuxt:** Used for building the app.
+- **PokéAPI:** Utilized to fetch Pokémon images and information, enriching the game with authentic Pokémon characters.
 
-# yarn
-yarn install
+## Getting Started
 
-# bun
-bun install
+To get started with Pokémemory V2, follow these simple steps:
+
+### Prerequisites
+
+- Ensure you have a modern web browser installed, such as Chrome, Firefox, or Safari.
+
+### Installation
+
+1. Clone the repository to your local machine:
+
+   ```sh
+   git clone https://github.com/Zoilum/zoilum.github.io.git
+   ```
+
+2. Navigate to the project directory:
+
+   ```sh
+   cd zoilum.github.io
+   ```
+
+3. Install modules, and start the server:
+   ```sh
+   npm i; npm run dev
+   ```
+
+(1. short version)
+
+```sh
+git clone https://github.com/Zoilum/zoilum.github.io.git; cd zoilum.github.io; npm i; npm run dev
 ```
 
-## Development Server
+## Usage
 
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
-npm run dev
-
-# pnpm
-pnpm run dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm run build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm run preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+To play Pokémemory V2, simply click on the cards to reveal Pokémon characters and match pairs to win the game.
