@@ -90,8 +90,6 @@ ul {
   height: 100dvh;
 }
 
-
-
 .game-grid {
   max-width: 100%;
   max-height: 100%;
