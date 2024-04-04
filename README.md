@@ -1,6 +1,6 @@
 # Demo
 
-https://zoilum.github.io/pokememory-nuxt/
+https://zoilum.github.io/
 
 ## Nuxt 3 Minimal Starter
 
