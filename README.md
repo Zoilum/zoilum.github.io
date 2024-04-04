@@ -2,6 +2,8 @@
 
 Welcome to Pokémemory V2, an enhanced version of [my first Pokémon Memory game](https://github.com/Zoilum/pokememory), this time with Vue + Nuxt!
 
+Demo: https://zoilum.github.io/
+
 ## Table of Contents
 
 - [Introduction](#introduction)
