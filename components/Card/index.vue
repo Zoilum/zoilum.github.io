@@ -46,7 +46,7 @@ const image = computed(() => pokemon.sprites.front_default)
 .content {
     position: absolute;
     width: 100%;
-    height: 75%;
+    height: 100%;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
     transition: transform 1s;
     transform-style: preserve-3d;
@@ -73,6 +73,7 @@ const image = computed(() => pokemon.sprites.front_default)
 }
 
 .back {
+    height: 75%;
     cursor: pointer;
 }
 

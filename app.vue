@@ -123,9 +123,8 @@ h1 {
 }
 
 body {
-  background: linear-gradient(-45deg, #ff0000, #2323d5, #00cb18);
-  background-size: 400% 400%;
-  animation: gradient 12s ease infinite;
+  background: linear-gradient(-45deg, #ff0000, #2323d5);
+  background-size: 100% 100%;
   height: 100vh;
 }
 
