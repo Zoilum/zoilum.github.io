@@ -4,7 +4,6 @@ const FIRST_GEN_POKEMONS_COUNT = 151;
 const showedCards = useState<string[]>('showedCards', () => [])
 const pairedCards = useState<[string, string][]>('pairedCards', () => [])
 const sortedPokemons = useState<Pokemon[]>('sortedPokemons', () => [])
-const imageLoaded = useState<boolean>('imageLoaded', () => false)
 
 // Fetch random pokemons
 const { data, status, error, refresh, pending } = await useAsyncData("pokemons", async () => {
@@ -33,8 +32,8 @@ const { data, status, error, refresh, pending } = await useAsyncData("pokemons",
   return pokemons;
 });
 
-const { data: compliment, refresh: getNewCompliment} =  useAsyncData("compliment", async () => {
-    return $fetch('https://8768zwfurd.execute-api.us-east-1.amazonaws.com/v1/compliments')
+const { data: compliment, refresh: getNewCompliment } = useAsyncData("compliment", async () => {
+  return $fetch('https://8768zwfurd.execute-api.us-east-1.amazonaws.com/v1/compliments')
 })
 
 //Validate fetch pokemons response
@@ -90,19 +89,20 @@ watch(gameWon, () => {
 
 <template>
   <div v-if="!pending && sortedPokemons.length">
-    {{ convertMS(elapsedTime) }}
+    <p class="timer">{{ convertMS(elapsedTime) }}</p>
     <ul class="game-grid">
       <Card v-for="pokemon, index in sortedPokemons" :pokemon="pokemon" :index="index"
         @show-card="() => handleShowCard(`${pokemon.name}-${index}`)"
         :isShown="showedCards.includes(`${pokemon.name}-${index}`) || pairedCards.some(pair => pair.includes(`${pokemon.name}-${index}`))"
-        @image-loaded="() => (imageLoaded = true)" </Card>
+        </Card>
     </ul>
   </div>
-  <div v-if="pending || error || !imageLoaded">
-    <GameStatusManager :status="status === 'success' && !imageLoaded ? 'pending' : status"></GameStatusManager>
+  <div v-else>
+    <GameStatusManager :status="status"></GameStatusManager>
   </div>
   <div v-if="gameWon" class="win">
-    <Victory @restart-game="restartGame" :elapsedTime="elapsedTime" :compliment="!!compliment ? compliment.toString() : 'Loading compliment...'"></Victory>
+    <Victory @restart-game="restartGame" :elapsedTime="elapsedTime"
+      :compliment="!!compliment ? compliment.toString() : 'Loading compliment...'"></Victory>
   </div>
 
 </template>
@@ -116,6 +116,7 @@ ul {
   width: 100dvw;
   height: 100dvh;
   font-family: fantasy;
+  overflow: hidden;
 }
 
 h1 {
@@ -125,7 +126,6 @@ h1 {
 body {
   background: linear-gradient(-45deg, #ff0000, #2323d5);
   background-size: 100% 100%;
-  height: 100vh;
 }
 
 @keyframes gradient {
