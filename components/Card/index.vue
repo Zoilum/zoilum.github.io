@@ -16,14 +16,14 @@ const image = computed(() => pokemon.sprites.front_default)
                 :checked="isShown" />
             <div class="content">
                 <div class="back">
-                    <NuxtImg src="/back.png" alt="Back of a pokemon card" class="back-cover" />
+                    <img src="/back.png" alt="Back of a pokemon card" class="back-cover" />
                 </div>
                 <div class="front">
-                    <NuxtImg width="160" height="222" :src="`/frontTypes/${pokemon.types[0].type.name}.png`"
+                    <img width="160" height="222" :src="`/${pokemon.types[0].type.name}.png`"
                         alt="Back of a pokemon card" class="back-cover" />
                     <p class="name">{{ pokemon.name }}</p>
                     <div :class="`pokemon-wrapper ${pokemon.types[0].type.name}`">
-                        <NuxtImg class="image" width="120" height="120" :src="image" :alt="pokemon.name" />
+                        <img class="image" width="120" height="120" :src="image" :alt="pokemon.name" />
                     </div>
                 </div>
 
