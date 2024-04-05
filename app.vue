@@ -33,6 +33,10 @@ const { data, status, error, refresh, pending } = await useAsyncData("pokemons",
   return pokemons;
 });
 
+const { data: compliment, refresh: getNewCompliment} =  useAsyncData("compliment", async () => {
+    return $fetch('https://8768zwfurd.execute-api.us-east-1.amazonaws.com/v1/compliments')
+})
+
 //Validate fetch pokemons response
 const pokemons = computed(() => { return isPokemonArray(data.value) ? [...data.value, ...data.value] : [] }
 );
@@ -45,6 +49,7 @@ const restartGame = async () => {
   elapsedTime.value = 0
   pairedCards.value = []
   refresh()
+  getNewCompliment()
 }
 
 const handleShowCard = (cardId: string) => {
@@ -97,7 +102,7 @@ watch(gameWon, () => {
     <GameStatusManager :status="status === 'success' && !imageLoaded ? 'pending' : status"></GameStatusManager>
   </div>
   <div v-if="gameWon" class="win">
-    <Victory @restart-game="restartGame" :elapsedTime="elapsedTime"></Victory>
+    <Victory @restart-game="restartGame" :elapsedTime="elapsedTime" :compliment="!!compliment ? compliment.toString() : 'Loading compliment...'"></Victory>
   </div>
 
 </template>

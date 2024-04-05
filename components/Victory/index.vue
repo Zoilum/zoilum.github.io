@@ -3,18 +3,14 @@ const emit = defineEmits(['restartGame'])
 
 interface Props {
     elapsedTime: number
+    compliment: string
 }
 
-const { elapsedTime } = defineProps<Props>()
-
-const { data: compliment } = await useAsyncData("compliment", async () => {
-    const compliment = await $fetch('https://8768zwfurd.execute-api.us-east-1.amazonaws.com/v1/compliments')
-    return compliment
-})
+const { elapsedTime, compliment } = defineProps<Props>()
 
 </script>
 <template>
-    <h1>Game completed in: <br/> {{ convertMS(elapsedTime) }}</h1>
+    <h1>Game completed in: <br /> {{ convertMS(elapsedTime) }}</h1>
     <h2>{{ compliment }}</h2>
     <button @click="$emit('restartGame')" class="button">
         RESTART GAME
