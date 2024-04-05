@@ -16,15 +16,13 @@ const image = computed(() => pokemon.sprites.front_default)
                 :checked="isShown" />
             <div class="content">
                 <div class="back">
-                    <NuxtImg preload src="/back.png" alt="Back of a pokemon card" class="back-cover"
-                        @load="$emit('imageLoaded')" />
-
+                    <NuxtImg src="/back.png" alt="Back of a pokemon card" class="back-cover" />
                 </div>
                 <div class="front">
-                    <NuxtImg width="160" height="222" preload :src="`/frontTypes/${pokemon.types[0].type.name}.png`"
-                    alt="Back of a pokemon card" class="back-cover" @load="$emit('imageLoaded')" />
-                    <p class="name">{{pokemon.name}}</p>
-                        <div :class="`pokemon-wrapper ${pokemon.types[0].type.name}`">
+                    <NuxtImg width="160" height="222" :src="`/frontTypes/${pokemon.types[0].type.name}.png`"
+                        alt="Back of a pokemon card" class="back-cover" />
+                    <p class="name">{{ pokemon.name }}</p>
+                    <div :class="`pokemon-wrapper ${pokemon.types[0].type.name}`">
                         <NuxtImg class="image" width="120" height="120" :src="image" :alt="pokemon.name" />
                     </div>
                 </div>
@@ -103,13 +101,11 @@ label {
 }
 
 .pokemon-wrapper {
-    position:absolute;
+    position: absolute;
     background: rgb(255, 255, 255);
-    background: linear-gradient(
-      0deg,
-      rgba(255, 255, 255, 1) 16%,
-      rgba(110, 110, 110, 1) 100%
-    );
+    background: linear-gradient(0deg,
+            rgba(255, 255, 255, 1) 16%,
+            rgba(110, 110, 110, 1) 100%);
     width: 8.3rem;
     height: 8.3rem;
     top: 0;
@@ -122,10 +118,11 @@ label {
     }
 
 }
+
 .name {
     position: absolute;
     top: 5px;
-    margin:0;
+    margin: 0;
     color: black;
     font-size: .75rem;
     font-family: monospace;
