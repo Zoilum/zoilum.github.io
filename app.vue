@@ -1,5 +1,7 @@
 <script setup lang="ts">
 const FIRST_GEN_POKEMONS_COUNT = 151;
+const SECOND_GEN_POKEMONS_COUNT = FIRST_GEN_POKEMONS_COUNT + 100;
+const THIRD_GEN_POKEMONS_COUNT = SECOND_GEN_POKEMONS_COUNT + 135;
 
 const showedCards = useState<string[]>('showedCards', () => [])
 const pairedCards = useState<[string, string][]>('pairedCards', () => [])
@@ -10,22 +12,22 @@ const { data, status, error, refresh, pending } = await useAsyncData("pokemons",
   const pokemons = await Promise.all([
     $fetch(
       `https://pokeapi.co/api/v2/pokemon/${getRandomInt(
-        FIRST_GEN_POKEMONS_COUNT
+        SECOND_GEN_POKEMONS_COUNT
       )}`
     ),
     $fetch(
       `https://pokeapi.co/api/v2/pokemon/${getRandomInt(
-        FIRST_GEN_POKEMONS_COUNT
+        SECOND_GEN_POKEMONS_COUNT
       )}`
     ),
     $fetch(
       `https://pokeapi.co/api/v2/pokemon/${getRandomInt(
-        FIRST_GEN_POKEMONS_COUNT
+        SECOND_GEN_POKEMONS_COUNT
       )}`
     ),
     $fetch(
       `https://pokeapi.co/api/v2/pokemon/${getRandomInt(
-        FIRST_GEN_POKEMONS_COUNT
+        SECOND_GEN_POKEMONS_COUNT
       )}`
     ),
   ]);
@@ -89,7 +91,7 @@ watch(gameWon, () => {
 
 <template>
   <div v-if="!pending && sortedPokemons.length">
-    <p class="timer">{{ convertMS(elapsedTime) }}</p>
+    <p class="timer">{{ convertToDigitalClock(elapsedTime) }}</p>
     <ul class="game-grid">
       <Card v-for="pokemon, index in sortedPokemons" :pokemon="pokemon" :index="index"
         @show-card="() => handleShowCard(`${pokemon.name}-${index}`)"
@@ -108,24 +110,43 @@ watch(gameWon, () => {
 </template>
 
 <style>
+* {
+  box-sizing: border-box;
+}
+html {
+  font-family: fantasy;
+  width: 100dvw;
+  overflow: hidden;
+}
+html,body, #__nuxt, #__layout, #__nuxt > div:first-of-type {
+  height:100%!important;
+  width: 100%!important;
+}
 html,
 body,
 ul {
   margin: 0;
   padding: 0;
-  width: 100dvw;
-  height: 100dvh;
-  font-family: fantasy;
-  overflow: hidden;
 }
-
+ul {
+  height: 100%;
+  padding: 4rem 0;
+  box-sizing: border-box;
+  overflow-y: scroll;
+  @media screen and (min-width: 688px) {
+    align-content: center;
+  }
+}
 h1 {
   margin: 0;
 }
 
 body {
-  background: linear-gradient(-45deg, #ff0000, #2323d5);
-  background-size: 100% 100%;
+  background: linear-gradient(
+    90deg,
+    rgba(14, 0, 255, 0.9037990196078431) 0%,
+    rgba(255, 0, 0, 0.923406862745098) 100%
+  );
 }
 
 @keyframes gradient {
@@ -146,24 +167,27 @@ body {
 .game-grid {
   max-width: 100%;
   max-height: 100%;
-  display: grid;
-  grid-template-rows: 6fr 6fr;
-  grid-template-columns: repeat(4, 10rem);
-  grid-template-rows: repeat(2, 13.875rem);
+  display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   justify-items: center;
-  align-content: center;
   gap: 1rem;
+  max-width: 745px;
+  margin: auto;
 }
 
 .timer {
   text-align: center;
   left: 0;
-  top: 1.5rem;
   right: 0;
   margin: auto;
   width: 100%;
   position: fixed;
+  background: rgba(255, 255, 255, .1);
+  padding: .5rem 0;
+  color: white;
+  z-index: 2;
+  font-family: monospace;
 }
 </style>

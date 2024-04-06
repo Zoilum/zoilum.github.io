@@ -19,11 +19,11 @@ const image = computed(() => pokemon.sprites.front_default)
                     <img src="/back.png" alt="Back of a pokemon card" class="back-cover" />
                 </div>
                 <div class="front">
-                    <img width="160" height="222" :src="`/${pokemon.types[0].type.name}.png`"
+                    <img  :src="`/${pokemon.types[0].type.name}.png`"
                         alt="Back of a pokemon card" class="back-cover" />
                     <p class="name">{{ pokemon.name }}</p>
                     <div :class="`pokemon-wrapper ${pokemon.types[0].type.name}`">
-                        <img class="image" width="120" height="120" :src="image" :alt="pokemon.name" />
+                        <img class="image"  :src="image" :alt="pokemon.name" />
                     </div>
                 </div>
 
@@ -45,7 +45,6 @@ const image = computed(() => pokemon.sprites.front_default)
     position: absolute;
     width: 100%;
     height: 100%;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
     transition: transform 1s;
     transform-style: preserve-3d;
 }
@@ -71,11 +70,11 @@ const image = computed(() => pokemon.sprites.front_default)
 }
 
 .back {
-    height: 75%;
     cursor: pointer;
 }
 
 .front {
+    height: 75%;
     color: white;
     transform: rotateY(180deg);
 
@@ -101,20 +100,20 @@ label {
 }
 
 .pokemon-wrapper {
-    position: absolute;
     background: rgb(255, 255, 255);
     background: linear-gradient(0deg,
             rgba(255, 255, 255, 1) 16%,
             rgba(110, 110, 110, 1) 100%);
     width: 8.3rem;
-    height: 8.3rem;
+    height: 8.5rem;
+    position: absolute;
     top: 0;
     clip-path: inset(1.4rem 0rem 1.5rem 0rem);
 
     .image {
         width: 100%;
         height: 100%;
-        transform: scale(0.7);
+        transform: scale(.7);
     }
 
 }

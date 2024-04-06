@@ -25,12 +25,10 @@ const { elapsedTime, compliment } = defineProps<Props>()
     justify-content: center;
     margin-top: 30px;
     padding: 20px 0;
-    height: 240px;
     position: absolute;
     z-index: 1;
     background: white;
-    width: 80%;
-    max-width: 720px;
+    width: 100%;
     margin: auto;
     border-radius: 16px;
     position: absolute;
@@ -40,7 +38,11 @@ const { elapsedTime, compliment } = defineProps<Props>()
     text-align: center;
     bottom: 0;
     box-shadow: 0px 11px 11px 0px rgba(0, 0, 0, 0.2);
-
+    @media screen and (min-width: 600px) {
+        width: 80%;
+        height: 240px;
+        max-width: 720px;
+    }
     .image {
         max-width: 90%;
         margin-bottom: 30px;
